@@ -1,18 +1,27 @@
 {
-    "name": "express-HelloWorld",
-    "description": "Hello World ExpressJS WebService",
-    "version": "0.0.1",
-    "private": true,
-    "dependencies": {
-        "express": "4.16.2",
-        "aws-serverless-express": "3.1.3"
-    },
-    "devDependencies": {
-        "mocha": "5.0.0",
-        "supertest": "3.0.0",
-        "unit.js": "^2.1.1"
-    },
-    "scripts": {
-        "test": "mocha --recursive tests"
-    }
+  "name": "psimplify-b",
+  "version": "1.0.0",
+  "description": "",
+  "main": "serverless.yml",
+  "scripts": {
+    "test": "jest src --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fbgoode/psimplify-b.git"
+  },
+  "author": "fbgoode",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fbgoode/psimplify-b/issues"
+  },
+  "homepage": "https://github.com/fbgoode/psimplify-b#readme",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.14.0",
+    "@aws-sdk/lib-dynamodb": "^3.14.0",
+    "aws-sdk": "^2.897.0"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
 }

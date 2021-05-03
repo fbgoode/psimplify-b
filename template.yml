@@ -30,10 +30,11 @@ Globals:
       Authorizers:
         PsimplifyCognito:
           UserPoolArn: arn:aws:cognito-idp:eu-central-1:277707868142:userpool/eu-central-1_bq9NOMUtt
-    DeploymentPreference:
-      Enabled: true
-      Type: Canary10Percent5Minutes
-      Role: !Ref CodeDeployRole
+    # Important! Enable this in production
+    # DeploymentPreference:
+    #   Enabled: true
+    #   Type: Canary10Percent5Minutes
+    #   Role: !Ref CodeDeployRole
 
 Resources:
 
