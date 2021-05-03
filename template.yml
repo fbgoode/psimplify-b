@@ -42,7 +42,7 @@ Resources:
   register:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName:  !Sub '$awscodestar-{ProjectId}-lambda-register'
+      FunctionName:  !Sub 'awscodestar-${ProjectId}-lambda-register'
       Handler: src/framework/aws/cognito/register.handler
       Description: Add user to the user database.
       Role: arn:aws:iam::277707868142:role/PsimplifyLambda
@@ -56,7 +56,7 @@ Resources:
   getUser:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: !Sub '$awscodestar-{ProjectId}-lambda-getUser'
+      FunctionName: !Sub 'awscodestar-${ProjectId}-lambda-getUser'
       Handler: src/framework/aws/api/users/getUser.handler
       Description: Get user from the user database.
       Role: arn:aws:iam::277707868142:role/PsimplifyLambda
