@@ -18,48 +18,77 @@ Parameters:
 Globals:
   Function:
     AutoPublishAlias: live
+    Runtime: nodejs14.x
+    MemorySize: 128
+    Timeout: 30
+    Environment:
+      Variables:
+        AWS_REGION: eu-central-1
+  Api:
+    Auth:
+      DefaultAuthorizer: PsimplifyCognito
+      Authorizers:
+        PsimplifyCognito:
+          UserPoolArn: arn:aws:cognito-idp:eu-central-1:277707868142:userpool/eu-central-1_bq9NOMUtt
     DeploymentPreference:
       Enabled: true
       Type: Canary10Percent5Minutes
       Role: !Ref CodeDeployRole
 
 Resources:
-  HelloWorld:
+
+  # This lambda will be called by cognito user pool Psimplify on PostConfirmation (connected manually)
+  register:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: !Sub 'awscodestar-${ProjectId}-lambda-HelloWorld'
-      Handler: index.handler
-      Runtime: nodejs12.x
-      Environment:
-        Variables:
-          NODE_ENV: production
-      Role:
-        Fn::GetAtt:
-        - LambdaExecutionRole
-        - Arn
-      Events:
-        GetEvent:
-          Type: Api
-          Properties:
-            Path: /
-            Method: get
-        PostEvent:
-          Type: Api
-          Properties:
-            Path: /
-            Method: post
-  LambdaExecutionRole:
-    Description: Creating service role in IAM for AWS Lambda
-    Type: AWS::IAM::Role
+      FunctionName:  !Sub '${ProjectId}-lambda-register'
+      Handler: src/framework/aws/cognito/register.handler
+      Description: Add user to the user database.
+      Role: arn:aws:iam::277707868142:role/PsimplifyLambda
+      # Events:
+      #   Api:
+      #     Type: Cognito
+      #     Properties:
+      #       UserPool: arn:aws:cognito-idp:eu-central-1:277707868142:userpool/eu-central-1_bq9NOMUtt
+      #       Trigger: PostConfirmation
+
+  getUser:
+    Type: AWS::Serverless::Function
     Properties:
-      RoleName: !Sub 'CodeStar-${ProjectId}-Execution${Stage}'
-      AssumeRolePolicyDocument:
-        Statement:
-        - Effect: Allow
-          Principal:
-            Service: [lambda.amazonaws.com]
-          Action: sts:AssumeRole
-      Path: /
-      ManagedPolicyArns:
-        - !Sub 'arn:${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'
-      PermissionsBoundary: !Sub 'arn:${AWS::Partition}:iam::${AWS::AccountId}:policy/CodeStar_${ProjectId}_PermissionsBoundary'
+      FunctionName: !Sub '${ProjectId}-lambda-getUser'
+      Handler: src/framework/aws/api/users/getUser.handler
+      Description: Get user from the user database.
+      Role: arn:aws:iam::277707868142:role/PsimplifyLambda
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: users/{id}
+            Method: GET
+
+  # DynamoDB table
+  # SampleTable:
+  #   Type: AWS::Serverless::SimpleTable
+  #   Properties:
+  #     PrimaryKey:
+  #       Name: id
+  #       Type: String
+  #     ProvisionedThroughput:
+  #       ReadCapacityUnits: 2
+  #       WriteCapacityUnits: 2
+
+  # LambdaExecutionRole:
+  #   Description: Creating service role in IAM for AWS Lambda
+  #   Type: AWS::IAM::Role
+  #   Properties:
+  #     RoleName: !Sub 'CodeStar-${ProjectId}-Execution${Stage}'
+  #     AssumeRolePolicyDocument:
+  #       Statement:
+  #       - Effect: Allow
+  #         Principal:
+  #           Service: [lambda.amazonaws.com]
+  #         Action: sts:AssumeRole
+  #     Path: /
+  #     ManagedPolicyArns:
+  #       - !Sub 'arn:${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'
+  #     PermissionsBoundary: !Sub 'arn:${AWS::Partition}:iam::${AWS::AccountId}:policy/CodeStar_${ProjectId}_PermissionsBoundary'
