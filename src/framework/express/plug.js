@@ -1,6 +1,6 @@
 // PLUG FOR EXPRESS API
 
-export default function makeApiCallback(adapter) {
+module.exports = function makeApiCallback(adapter) {
     return (req, res) => {
         const httpRequest = {
             body: req.body,

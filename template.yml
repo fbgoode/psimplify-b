@@ -39,12 +39,12 @@ Globals:
 Resources:
 
   # This lambda will be called by cognito user pool Psimplify on PostConfirmation (connected manually)
-  register:
+  registerUser:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName:  !Sub 'awscodestar-${ProjectId}-lambda-register'
+      FunctionName:  !Sub 'awscodestar-${ProjectId}-lambda-registerUser'
       Handler: src/framework/aws/cognito/register.handler
-      Description: Add user to the user database.
+      Description: Add confirmed user to the user database. To be called by cognito on PostConfirmation.
       Role: arn:aws:iam::277707868142:role/PsimplifyLambda
       # Events:
       #   Api:
@@ -53,18 +53,18 @@ Resources:
       #       UserPool: arn:aws:cognito-idp:eu-central-1:277707868142:userpool/eu-central-1_bq9NOMUtt
       #       Trigger: PostConfirmation
 
-  getUser:
+  protectedApi:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: !Sub 'awscodestar-${ProjectId}-lambda-getUser'
-      Handler: src/framework/aws/api/users/getUser.handler
-      Description: Get user from the user database.
+      FunctionName: !Sub 'awscodestar-${ProjectId}-lambda-protectedApi'
+      Handler: src/framework/aws/api/index.handler
+      Description: Psimplify protected API endpoints.
       Role: arn:aws:iam::277707868142:role/PsimplifyLambda
       Events:
-        Api:
+        getUser:
           Type: Api
           Properties:
-            Path: users/{id}
+            Path: /users/{id}
             Method: GET
 
   # DynamoDB table

@@ -1,6 +1,6 @@
 // PLUG FOR AWS HTTP API
 
-export default function makeApiCallback(adapter) {
+module.exports = function makeApiCallback(adapter) {
     return async (event, context) => {
         console.log(event,context);
         const request = {

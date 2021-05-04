@@ -1,4 +1,4 @@
-export default function makeUser ({
+module.exports = function makeUser ({
     email,
     name,
     lastname,

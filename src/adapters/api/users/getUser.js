@@ -1,4 +1,4 @@
-export default function makeGetuserAdapter ({ getUser }) {
+module.exports = function makeGetuserAdapter ({ getUser }) {
   return async function getUserAdapter (httpRequest) {
     try {
       const id = httpRequest.params.id;

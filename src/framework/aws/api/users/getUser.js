@@ -1,9 +1,10 @@
-import makeApiCallback from '../plug';
-import makeGetUser from '../../../useCases/customer/user/getUser';
-import dbGetUserById from '../../../../adapters/db/users/dbGetUserById';
-import makeGetuserAdapter from '../../../../adapters/api/users/getUser';
+const makeApiCallback = require('../plug');
+const makeGetUser = require('../../../../useCases/customer/user/getUser');
+const usersdb = require('../../../../adapters/db/users');
+const makeGetuserAdapter = require('../../../../adapters/api/users/getUser');
 
-const getUser = makeGetUser({dbGetUserById});
+const getUser = makeGetUser({usersdb});
 const getUserAdapter = makeGetuserAdapter({getUser});
+const getUserApiCallback = makeApiCallback({getUserAdapter});
 
-exports.handler = makeApiCallback({getUserAdapter});
+module.exports = getUserApiCallback;

@@ -1,9 +1,9 @@
-import makeUser from '../../../entities/user'
+const makeUser = require('../../../entities/user');
 
-export default function makeRegisterUser ({ dbAddUser }) {
+module.exports = function makeRegisterUser ({ usersdb }) {
   return async function registerUser (userInfo) {
     const user = makeUser(userInfo);
-    const newUser = await dbAddUser(user);
+    const newUser = await usersdb.addUser(user);
     return newUser;
   }
 }

@@ -1,7 +1,7 @@
 // PostConfirmation PLUG FOR AWS COGNITO
 
-import makeRegisterUser from '../../../useCases/customer/user/registerUser';
-import dbAddUser from '../../../../adapters/db/users/dbAddUser';
+const makeRegisterUser = require('../../../useCases/customer/user/registerUser');
+const dbAddUser = require('../../../../adapters/db/users/dbAddUser');
 
 const registerUser = makeRegisterUser({dbAddUser});
 
