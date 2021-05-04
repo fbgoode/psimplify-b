@@ -5,6 +5,6 @@ const makeGetuserAdapter = require('../../../../adapters/api/users/getUser');
 
 const getUser = makeGetUser({usersdb});
 const getUserAdapter = makeGetuserAdapter({getUser});
-const getUserApiCallback = makeApiCallback({getUserAdapter});
+const getUserApiCallback = makeApiCallback(getUserAdapter);
 
 module.exports = getUserApiCallback;

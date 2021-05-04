@@ -1,18 +1,16 @@
 // PLUG FOR AWS HTTP API
 
 module.exports = function makeApiCallback(adapter) {
-    return async (event, context) => {
-        console.log(event,context);
+    return async (event) => {
         const request = {
             body: event.body,
             query: event.queryStringParameters,
             params: event.pathParameters,
-            ip: event.requestContext.http.sourceIp,
-            method: event.requestContext.http.method,
-            path: event.requestContext.http.path,
+            ip: event.requestContext.identity.sourceIp,
+            method: event.httpMethod,
+            path: event.path,
             headers: event.headers,
-            jwtclaims: event.requestContext.authorizer.jwt.claims,
-            jwtscopes: event.requestContext.authorizer.jwt.scopes,
+            identity: event.requestContext.identity
         };
         let statusCode;
         let body;
@@ -22,7 +20,7 @@ module.exports = function makeApiCallback(adapter) {
         try {
             const response = await adapter(request); // Call to adapter
             statusCode = response.statusCode;
-            body = response.body;
+            body = JSON.stringify(response.body);
             return {
                 statusCode,
                 body,
@@ -30,7 +28,8 @@ module.exports = function makeApiCallback(adapter) {
             };
         } catch(e) {
             statusCode = 500;
-            body = {error: 'An unkown error occurred.'}
+            body = JSON.stringify({error: 'An unkown error occurred.'});
+            // body = JSON.stringify({error: e.message});
             return {
                 statusCode,
                 body,

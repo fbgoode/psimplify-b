@@ -1,18 +1,16 @@
 
 const getUserApiCallback = require('./users/getUser');
-exports.handler = async (event, context) => {
+exports.handler = async (event) => {
     console.info('received:', event);
     let response;
-    switch ([event.httpMethod,event.resource]) {
-        case ['GET','/users/{id}']:
-            response = getUserApiCallback(event, context);
-            break;
+    switch (`${event.httpMethod} ${event.resource}`) {
+        case 'GET /users/{id}':
+            return await getUserApiCallback(event);
         default:
-            response = {
+            return {
                 statusCode:404,
-                body:{message:'Endpoint not found.'},
+                body:JSON.stringify({message:'Endpoint not found.'}),
                 headers:{"Content-Type": "application/json"}
             };
     }
-    return response;
 }
