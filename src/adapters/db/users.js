@@ -3,7 +3,7 @@ const {GetCommand, PutCommand} = require("@aws-sdk/lib-dynamodb");
 const TableName = 'users';
 
 async function getUserById (userId) {
-  return await docClient.send(
+  const response = await docClient.send(
     new GetCommand({
       TableName,
       Key: {
@@ -11,15 +11,17 @@ async function getUserById (userId) {
       }
     })
   );
+  return response.Item;
 }
 
 async function addUser (user) {
-  return await docClient.send(
+  const response = await docClient.send(
     new PutCommand({
       TableName,
       Item: user
     })
   );
+  return response.Item;
 }
 
 module.exports = Object.freeze({

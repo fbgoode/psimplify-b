@@ -5,9 +5,15 @@ const dbAddUser = require('../../../../adapters/db/users/dbAddUser');
 
 const registerUser = makeRegisterUser({dbAddUser});
 
-exports.handler = (event, context) => {
-    console.log(event,context);
+exports.handler = (event, context, callback) => {
+    console.log(event);
     
-    const response = await registerUser(request);
-    console.log(response);
+    const userData = {
+        email: event.request.userAttributes.email
+    };
+
+    const response = await registerUser(userData);
+
+    callback(null, event);
+
 }
