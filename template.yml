@@ -25,6 +25,11 @@ Globals:
     #   Variables:
     #     AWS_REG: eu-central-1 
   Api:
+    Cors:
+      AllowMethods: "'GET,POST,PUT,DELETE,OPTIONS'"
+      AllowHeaders: "'content-type'"
+      AllowOrigin: "'*'"
+      AllowCredentials: "'*'"
     Auth:
       DefaultAuthorizer: PsimplifyCognito
       Authorizers:
@@ -67,7 +72,7 @@ Resources:
             Path: /users/{id}
             Method: GET
 
-            
+
   # DynamoDB table
   # SampleTable:
   #   Type: AWS::Serverless::SimpleTable
