@@ -26,10 +26,10 @@ Globals:
     #     AWS_REG: eu-central-1 
   Api:
     Cors:
-      AllowMethods: "'GET,POST,PUT,DELETE,OPTIONS'"
-      AllowHeaders: "'content-type'"
+      AllowMethods: "'GET,POST'"
+      AllowHeaders: "'*'"
       AllowOrigin: "'*'"
-      AllowCredentials: "'*'"
+      AllowCredentials: True
     Auth:
       DefaultAuthorizer: PsimplifyCognito
       Authorizers:
