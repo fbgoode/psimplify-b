@@ -26,8 +26,8 @@ Globals:
     #     AWS_REG: eu-central-1 
   Api:
     Cors:
-      AllowMethods: "'GET,POST'"
-      AllowHeaders: "'*'"
+      AllowMethods: "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+      AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
       AllowOrigin: "'*'"
       AllowCredentials: True
     Auth:
