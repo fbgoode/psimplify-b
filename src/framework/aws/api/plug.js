@@ -15,7 +15,8 @@ module.exports = function makeApiCallback(adapter) {
         let statusCode;
         let body;
         let headers = {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*"
         };
         try {
             const response = await adapter(request); // Call to adapter
