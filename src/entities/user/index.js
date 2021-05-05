@@ -1,18 +1,21 @@
 module.exports = function makeUser ({
-    email,
-    name,
-    lastname,
-    phone = '',
-    address = '',
-    company = '',
-    nationalid = '',
-    colnum = '',
-    plan = 'free',
-    patients = [],
-    config = {},
-    createdAt = Date.now(),
-    modifiedAt = Date.now()
-  }) {
+  userId,
+  email,
+  name,
+  lastname,
+  phone = '',
+  address = '',
+  company = '',
+  nationalid = '',
+  colnum = '',
+  plan = 'free',
+  config = {},
+  createdAt = Date.now(),
+  modifiedAt = Date.now()
+}) {
+  if (!userId) {
+    throw new Error('User must have an id.');
+  }
   if (!email) {
     throw new Error('User must have an email.');
   }
@@ -23,6 +26,7 @@ module.exports = function makeUser ({
     throw new Error('User must have a last name.');
   }
   return {
+    userId,
     email,
     name,
     lastname,
@@ -32,7 +36,6 @@ module.exports = function makeUser ({
     nationalid,
     colnum,
     plan,
-    patients,
     config,
     createdAt,
     modifiedAt

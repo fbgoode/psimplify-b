@@ -1,31 +1,12 @@
 {
-    "body": "",
-    "resource": "/users/{id}",
-    "path": "/users/1",
-    "httpMethod": "GET",
-    "queryStringParameters": {
-    },
-    "pathParameters": {
-      "id": "1"
-    },
-    "headers": {
-    },
-    "requestContext": {
-      "identity": {
-        "cognitoIdentityPoolId": null,
-        "accountId": null,
-        "cognitoIdentityId": null,
-        "caller": null,
-        "accessKey": null,
-        "sourceIp": "127.0.0.1",
-        "cognitoAuthenticationType": null,
-        "cognitoAuthenticationProvider": null,
-        "userArn": null,
-        "userAgent": "Custom User Agent String",
-        "user": null
-      },
-      "path": "/users/1",
-      "resourcePath": "/users/{id}",
-      "httpMethod": "GET"
-    }
-  }
+  "userName": "f8e8d8ef-94d5-420c-a38c-d6fd5f768a89",
+  "request": {
+      "userAttributes": {
+          "email": "user@example.com",
+          "given_name": "Userio",
+          "family_name": "Useriez",
+          "email_verified": true
+      }
+  },
+  "response": {}
+}

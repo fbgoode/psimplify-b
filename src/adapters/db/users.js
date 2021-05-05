@@ -21,7 +21,7 @@ async function addUser (user) {
       Item: user
     })
   );
-  return response.Item;
+  return getUserById(user.userId);
 }
 
 module.exports = Object.freeze({

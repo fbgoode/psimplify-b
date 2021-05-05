@@ -29,7 +29,7 @@ Globals:
       DefaultAuthorizer: PsimplifyCognito
       Authorizers:
         PsimplifyCognito:
-          UserPoolArn: arn:aws:cognito-idp:eu-central-1:277707868142:userpool/eu-central-1_bq9NOMUtt
+          UserPoolArn: arn:aws:cognito-idp:eu-central-1:277707868142:userpool/eu-central-1_e4NS5sZFi
     # Important! Enable this in production
     # DeploymentPreference:
     #   Enabled: true
@@ -50,7 +50,7 @@ Resources:
       #   Api:
       #     Type: Cognito
       #     Properties:
-      #       UserPool: arn:aws:cognito-idp:eu-central-1:277707868142:userpool/eu-central-1_bq9NOMUtt
+      #       UserPool: arn:aws:cognito-idp:eu-central-1:277707868142:userpool/eu-central-1_e4NS5sZFi
       #       Trigger: PostConfirmation
 
   protectedApi:

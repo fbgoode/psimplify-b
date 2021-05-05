@@ -1,9 +1,14 @@
-const { handler } = require('./src/framework/aws/api/index');
-const event = require('./events/getUser.json');
+const { handler: apifn } = require('./src/framework/aws/api/index');
+const apievent = require('./events/getUser.json');
+
+const { handler: registerfn } = require('./src/framework/aws/cognito/register');
+const cognitoevent = require('./events/register.json');
 
 (async () => {
 
-    const result = await handler(event);
+    // const result = await apifn(apievent);
+
+    const result = await registerfn(cognitoevent);
 
     console.log(result);
 

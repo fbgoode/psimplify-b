@@ -1,19 +1,23 @@
 // PostConfirmation PLUG FOR AWS COGNITO
 
 const makeRegisterUser = require('../../../useCases/customer/user/registerUser');
-const dbAddUser = require('../../../../adapters/db/users/dbAddUser');
+const userdb = require('../../../adapters/db/users');
+const {v4: makeuuid} = require('uuid');
 
-const registerUser = makeRegisterUser({dbAddUser});
+const registerUser = makeRegisterUser({userdb, makeuuid});
 
-exports.handler = (event, context, callback) => {
+exports.handler = async (event) => {
     console.log(event);
     
     const userData = {
+        userId: event.userName,
+        name: event.request.userAttributes.given_name,
+        lastname: event.request.userAttributes.family_name,
         email: event.request.userAttributes.email
     };
 
-    const response = await registerUser(userData);
+    const newUser = await registerUser(userData);
 
-    callback(null, event);
+    return null, event;
 
 }

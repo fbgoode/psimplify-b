@@ -1,12 +1,12 @@
 {
     "body": "",
     "resource": "/users/{id}",
-    "path": "/users/1",
+    "path": "/users/7fe6da92-5842-434a-a716-ed68f8e613f1",
     "httpMethod": "GET",
     "queryStringParameters": {
     },
     "pathParameters": {
-      "id": "1"
+      "id": "7fe6da92-5842-434a-a716-ed68f8e613f1"
     },
     "headers": {
     },
@@ -24,7 +24,7 @@
         "userAgent": "Custom User Agent String",
         "user": null
       },
-      "path": "/users/1",
+      "path": "/users/7fe6da92-5842-434a-a716-ed68f8e613f1",
       "resourcePath": "/users/{id}",
       "httpMethod": "GET"
     }
