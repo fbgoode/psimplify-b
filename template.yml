@@ -67,6 +67,7 @@ Resources:
             Path: /users/{id}
             Method: GET
 
+            
   # DynamoDB table
   # SampleTable:
   #   Type: AWS::Serverless::SimpleTable
