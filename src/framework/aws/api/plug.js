@@ -14,10 +14,10 @@ module.exports = function makeApiCallback(adapter) {
         };
         let statusCode;
         let body;
-        let headers = {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*"
-        };
+        // let headers = {
+        //     "Content-Type": "application/json",
+        //     "Access-Control-Allow-Origin": "*"
+        // };
         try {
             const response = await adapter(request); // Call to adapter
             statusCode = response.statusCode;
@@ -25,7 +25,7 @@ module.exports = function makeApiCallback(adapter) {
             return {
                 statusCode,
                 body,
-                headers
+                // headers
             };
         } catch(e) {
             statusCode = 500;
@@ -34,7 +34,7 @@ module.exports = function makeApiCallback(adapter) {
             return {
                 statusCode,
                 body,
-                headers
+                // headers
             };
         }
     }
