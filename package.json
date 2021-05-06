@@ -20,6 +20,10 @@
     "@aws-sdk/client-dynamodb": "^3.14.0",
     "@aws-sdk/lib-dynamodb": "^3.14.0",
     "aws-sdk": "^2.897.0",
+    "cognito-express": "^2.0.18",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "serverless-http": "^2.7.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

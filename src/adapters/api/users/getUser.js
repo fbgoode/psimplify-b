@@ -20,7 +20,7 @@ module.exports = function makeGetuserAdapter ({ getUser }) {
       console.log(e)
 
       return {
-        statusCode: 400,
+        statusCode: 500,
         body: {
           error: e.message
         }

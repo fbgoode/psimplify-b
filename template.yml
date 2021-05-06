@@ -24,16 +24,16 @@ Globals:
     # Environment:
     #   Variables:
     #     AWS_REG: eu-central-1 
-  Api:
-    Cors:
-      AllowMethods: "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
-      AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
-      AllowOrigin: "'*'"
-    Auth:
-      DefaultAuthorizer: PsimplifyCognito
-      Authorizers:
-        PsimplifyCognito:
-          UserPoolArn: arn:aws:cognito-idp:eu-central-1:277707868142:userpool/eu-central-1_e4NS5sZFi
+  # Api:
+    # Auth:
+    #   DefaultAuthorizer: PsimplifyCognito
+    #   Authorizers:
+    #     PsimplifyCognito:
+    #       UserPoolArn: arn:aws:cognito-idp:eu-central-1:277707868142:userpool/eu-central-1_e4NS5sZFi
+    # Cors:
+    #   AllowMethods: "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+    #   AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+    #   AllowOrigin: "'*'"
     # Important! Enable this in production
     # DeploymentPreference:
     #   Enabled: true
@@ -61,15 +61,15 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: !Sub 'awscodestar-${ProjectId}-lambda-protectedApi'
-      Handler: src/framework/aws/api/index.handler
+      Handler: src/framework/express/index.handler
       Description: Psimplify protected API endpoints.
       Role: arn:aws:iam::277707868142:role/PsimplifyLambda
       Events:
         getUser:
-          Type: Api
+          Type: HttpApi
           Properties:
-            Path: /users/{id}
-            Method: GET
+            Path: /{proxy+}
+            Method: get
 
 
   # DynamoDB table
