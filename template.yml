@@ -69,7 +69,7 @@ Resources:
           Type: HttpApi
           Properties:
             Path: /{proxy+}
-            Method: all
+            Method: ANY
 
 
   # DynamoDB table
