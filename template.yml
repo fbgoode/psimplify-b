@@ -65,11 +65,11 @@ Resources:
       Description: Psimplify protected API endpoints.
       Role: arn:aws:iam::277707868142:role/PsimplifyLambda
       Events:
-        getUser:
+        Api:
           Type: HttpApi
           Properties:
             Path: /{proxy+}
-            Method: get
+            Method: all
 
 
   # DynamoDB table

@@ -1,4 +1,4 @@
-const { handler: apifn } = require('./src/framework/aws/api/index');
+const { handler: apifn } = require('./src/framework/express/index');
 const apievent = require('./events/getUser.json');
 
 const { handler: registerfn } = require('./src/framework/aws/cognito/register');
