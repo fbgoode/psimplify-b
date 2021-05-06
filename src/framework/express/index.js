@@ -18,3 +18,4 @@ app.get('/users/:id', async (req, res) => {
 });
 
 exports.handler  = serverless(app);
+exports.app = app;
