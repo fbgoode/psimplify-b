@@ -15,8 +15,8 @@ Parameters:
     Description: The name for a project pipeline stage, such as Staging or Prod, for which resources are provisioned and deployed.
     Default: ''
   MongoUri:
-    Type: 'Aws::SSM::Parameter::Value<String>'
-    Default: psimplifyMongoDBURI
+    Type: String
+    Description: MongoDB uri to connect to the database.
 
 Globals:
   Function:
