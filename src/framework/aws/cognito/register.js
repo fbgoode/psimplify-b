@@ -2,11 +2,13 @@
 
 const makeRegisterUser = require('../../../useCases/customer/user/registerUser');
 const userdb = require('../../../adapters/db/users');
+const connectToDatabase = require('../../mongodb');
 
 const registerUser = makeRegisterUser({userdb});
 
 exports.handler = async (event) => {
-    console.log(event);
+
+    await connectToDatabase(null,null,()=>{});
     
     const userData = {
         name: event.request.userAttributes.given_name,

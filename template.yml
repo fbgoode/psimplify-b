@@ -14,16 +14,19 @@ Parameters:
     Type: String
     Description: The name for a project pipeline stage, such as Staging or Prod, for which resources are provisioned and deployed.
     Default: ''
+  MongoUri:
+    Type: 'Aws::SSM::Parameter::Value<String>'
+    Default: psimplifyMongoDBURI
 
 Globals:
   Function:
-    # AutoPublishAlias: live
     Runtime: nodejs14.x
     MemorySize: 128
     Timeout: 30
     Environment:
       Variables:
-        MONGODB_URI: '{{resolve:ssm:psimplify-mongodb:1}}'
+        MONGODB_URI:
+          Ref: MongoUri
   # Api:
     # Auth:
     #   DefaultAuthorizer: PsimplifyCognito
