@@ -1,9 +1,9 @@
 module.exports = function makeGetUser ({ userdb }) {
-  return async function getUser (id) {
-    if (!id) {
-      throw new Error('Debes proporcionar un id de usuario.');
+  return async function getUser(email) {
+    if (!email) {
+      throw new Error('Debes proporcionar el email de usuario.');
     }
-    const user = await userdb.getUserById(id);
+    const user = await userdb.getByEmail(email);
     return user;
   }
 }

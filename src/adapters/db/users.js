@@ -1,30 +1,22 @@
-const docClient = require('../../framework/aws/dynamodb');
-const {GetCommand, PutCommand} = require("@aws-sdk/lib-dynamodb");
-const TableName = 'users';
+const User = require('../../framework/mongodb/users');
 
-async function getUserById (userId) {
-  const response = await docClient.send(
-    new GetCommand({
-      TableName,
-      Key: {
-        userId
-      }
-    })
-  );
-  return response.Item;
+async function getById (userId) {
+  const response = await User.findById(userId);;
+  return response;
 }
 
-async function addUser (user) {
-  const response = await docClient.send(
-    new PutCommand({
-      TableName,
-      Item: user
-    })
-  );
-  return getUserById(user.userId);
+async function getByEmail (email) {
+  const response = await User.findOne({email});;
+  return response;
+}
+
+async function add (user) {
+  const response = await User.create(user);
+  return response;
 }
 
 module.exports = Object.freeze({
-  addUser,
-  getUserById
+  add,
+  getById,
+  getByEmail
 });

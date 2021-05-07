@@ -5,7 +5,7 @@
   "main": "serverless.yml",
   "scripts": {
     "test": "jest",
-    "dev": "node ./src/framework/express/dev.js"
+    "dev": "nodemon -r dotenv/config ./src/framework/express/dev.js"
   },
   "repository": {
     "type": "git",
@@ -24,10 +24,13 @@
     "cognito-express": "^2.0.18",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "mongoose": "^5.12.7",
     "serverless-http": "^2.7.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "jest": "^26.6.3"
+    "dotenv": "^9.0.0",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.7"
   }
 }

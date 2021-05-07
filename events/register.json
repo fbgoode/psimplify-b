@@ -2,7 +2,7 @@
   "userName": "f8e8d8ef-94d5-420c-a38c-d6fd5f768a89",
   "request": {
       "userAttributes": {
-          "email": "user@example.com",
+          "email": "user2@example.com",
           "given_name": "Userio",
           "family_name": "Useriez",
           "email_verified": true

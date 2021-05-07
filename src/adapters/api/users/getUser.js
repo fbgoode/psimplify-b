@@ -1,8 +1,8 @@
 module.exports = function makeGetuserAdapter ({ getUser }) {
   return async function getUserAdapter (httpRequest) {
     try {
-      const id = httpRequest.params.id;
-      const user = await getUser(id);
+      const email = httpRequest.params.email;
+      const user = await getUser(email);
       if (!user) {
         return {
           statusCode: 404,
