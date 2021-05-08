@@ -1,8 +1,17 @@
-module.exports = function makeGetuserAdapter ({ getUser }) {
-  return async function getUserAdapter (httpRequest) {
+module.exports = function makeGetUserAdapter ({ getUser }) {
+  return async function getUserAdapter (req,res) {
     try {
-      const email = httpRequest.params.email;
-      const user = await getUser(email);
+      const id = req.params.id;
+      const userId = res.locals.user.sub;
+      if (id != userId) {
+        return {
+          statusCode: 403,
+          body: {
+            error: 'Forbidden.'
+          }
+        }
+      }
+      const user = await getUser(id,userId);
       if (!user) {
         return {
           statusCode: 404,
@@ -22,7 +31,7 @@ module.exports = function makeGetuserAdapter ({ getUser }) {
       return {
         statusCode: 500,
         body: {
-          error: e.message
+          error: "Internal server error."
         }
       }
     }

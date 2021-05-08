@@ -11,6 +11,7 @@ exports.handler = async (event) => {
     await connectToDatabase(null,null,()=>{});
     
     const userData = {
+        _id: event.userName,
         name: event.request.userAttributes.given_name,
         lastname: event.request.userAttributes.family_name,
         email: event.request.userAttributes.email

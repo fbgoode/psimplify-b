@@ -1,10 +1,10 @@
 {
-  "userName": "f8e8d8ef-94d5-420c-a38c-d6fd5f768a89",
+  "userName": "e0ec2c0f-874a-4ac2-8a46-2591b5665913",
   "request": {
       "userAttributes": {
-          "email": "user2@example.com",
-          "given_name": "Userio",
-          "family_name": "Useriez",
+          "email": "fedebaez@gmail.com",
+          "given_name": "Federico",
+          "family_name": "Báez",
           "email_verified": true
       }
   },

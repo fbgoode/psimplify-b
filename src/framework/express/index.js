@@ -11,7 +11,7 @@ const routers = require('./routers');
 const app = new express();
 app.use(cors());
 app.use(express.json());
-// app.use(cognito);
+app.use(cognito);
 app.use(connectToDatabase);
 app.use(routers);
 
