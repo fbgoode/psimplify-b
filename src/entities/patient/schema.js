@@ -1,6 +1,7 @@
 module.exports = (Types) => ({
-    userId: {
-        type: String
+    user: {
+        type: String,
+        ref: 'User'
     },
     name: {
         type: String,
@@ -60,11 +61,9 @@ module.exports = (Types) => ({
         type: {
             type: String
         },
-        eventId: {
-            type: Types.ObjectId
-        },
-        date: {
-            type: Date
+        event: {
+            type: Types.ObjectId,
+            refPath: 'history.type'
         }
     }],
 });
