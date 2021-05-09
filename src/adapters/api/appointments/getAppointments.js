@@ -3,12 +3,11 @@ module.exports = function makeGetAppointmentsAdapter ({ getAppointments }) {
     try {
       const fromDate = req.query.fromDate;
       const toDate = req.query.toDate;
-      const user = "e0ec2c0f-874a-4ac2-8a46-2591b5665913";
-      // const user = res.locals.user.sub;
-      const appointment = await getAppointments(fromDate,toDate,user);
+      const user = res.locals.user.sub;
+      const appointments = await getAppointments(fromDate,toDate,user);
       return {
         statusCode: 200,
-        body: { appointment }
+        body: { appointments }
       }
     } catch (e) {
       // TODO: Error logging

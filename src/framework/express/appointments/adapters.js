@@ -9,3 +9,8 @@ const makeGetAppointments = require('../../../useCases/customer/appointment/getA
 const makeGetAppointmentsAdapter = require('../../../adapters/api/appointments/getAppointments');
 const getAppointments = makeGetAppointments({appointmentdb});
 exports.getAppointments = makeGetAppointmentsAdapter({getAppointments});
+
+const makeGetLastAppointments = require('../../../useCases/customer/appointment/getLastAppointments');
+const makeGetLastAppointmentsAdapter = require('../../../adapters/api/appointments/getLastAppointments');
+const getLastAppointments = makeGetLastAppointments({appointmentdb});
+exports.getLastAppointments = makeGetLastAppointmentsAdapter({getLastAppointments});

@@ -5,8 +5,10 @@ async function getById (appointmentId) {
   return response;
 }
 
-async function query ({user,fromDate,toDate}) {
-  const response = await Appointment.find({user,date:{$gte:fromDate,$lte:toDate}}).sort('date').populate('patient', 'name lastname');
+async function query ({user,fromDate,toDate,untilDate,limit}) {
+  let response;
+  if (untilDate) response = await Appointment.find({user,date:{$lt:untilDate}}).sort('-date').limit(limit).populate('patient', 'name lastname');
+  else response = await Appointment.find({user,date:{$gte:fromDate,$lte:toDate}}).sort('date').populate('patient', 'name lastname');
   return response;
 }
 
