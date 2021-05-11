@@ -25,7 +25,7 @@
 
 ---
 
-This is the back-end to [this front-end repo](https://github.com/fbgoode/psimplify-f).
+This is the back-end to [this front-end repo](https://github.com/fbgoode/psimplify-b).
 
 <br>
 
@@ -34,9 +34,11 @@ This is the back-end to [this front-end repo](https://github.com/fbgoode/psimpli
 ### Check out the [API Documentation](https://documenter.getpostman.com/view/14551874/TzRUA6vf).
 
 ### Run development server locally:
-1. Clone repo
+1. Clone repo and install dependencies
 ```
-git clone https://github.com/fbgoode/psimplify-f.git
+git clone https://github.com/fbgoode/psimplify-b.git
+cd psimplify-b
+npm i
 ```
 2. Start a free tier database cluster in [MongoDB Atlas](https://www.mongodb.com/es/cloud/atlas) or start a MongoDB server using the provided docker-compose.yaml file (Docker & docker-compose required):
 ```
