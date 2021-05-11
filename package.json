@@ -18,15 +18,11 @@
   },
   "homepage": "https://github.com/fbgoode/psimplify-b#readme",
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.14.0",
-    "@aws-sdk/lib-dynamodb": "^3.14.0",
-    "aws-sdk": "^2.897.0",
     "cognito-express": "^2.0.18",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^5.12.7",
-    "serverless-http": "^2.7.0",
-    "uuid": "^8.3.2"
+    "serverless-http": "^2.7.0"
   },
   "devDependencies": {
     "dotenv": "^9.0.0",
