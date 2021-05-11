@@ -7,4 +7,9 @@ router.post('/patients', async (req, res) => {
     res.status(result.statusCode).json(result.body);
 });
 
+router.get('/patients', async (req, res) => {
+    const result = await adapters.getAllPatients(req,res);
+    res.status(result.statusCode).json(result.body);
+});
+
 module.exports = router;

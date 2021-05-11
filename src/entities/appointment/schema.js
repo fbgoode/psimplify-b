@@ -1,11 +1,13 @@
 module.exports = (Types) => ({
     user: {
         type: String,
-        ref: 'User'
+        ref: 'User',
+        required: true
     },
     patient: {
         type: Types.ObjectId,
-        ref: 'Patient'
+        ref: 'Patient',
+        required: true
     },
     date: {
         type: Date,

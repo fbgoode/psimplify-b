@@ -5,6 +5,11 @@ async function getById (patientId) {
   return response;
 }
 
+async function query ({user}) {
+  const response = await Patient.find({user}).sort('-updatedAt');
+  return response;
+}
+
 async function add (patient) {
   const response = await Patient.create(patient);
   return response;
@@ -12,5 +17,6 @@ async function add (patient) {
 
 module.exports = Object.freeze({
   add,
-  getById
+  getById,
+  query
 });
