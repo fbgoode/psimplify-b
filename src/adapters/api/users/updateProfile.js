@@ -1,8 +1,9 @@
-module.exports = function makeGetUserAdapter ({ getUser }) {
-  return async function getUserAdapter (req,res) {
+module.exports = function makeUpdateProfileAdapter ({ updateProfile }) {
+  return async function updateProfileAdapter (req,res) {
     try {
-      const id = req.params.id;
+      const profileData = req.body;
       const userId = res.locals.user.sub;
+      const id = req.params.id;
       if (id != userId) {
         return {
           statusCode: 403,
@@ -11,15 +12,7 @@ module.exports = function makeGetUserAdapter ({ getUser }) {
           }
         }
       }
-      const user = await getUser(userId);
-      if (!user) {
-        return {
-          statusCode: 404,
-          body: {
-            error: 'User not found.'
-          }
-        }
-      }
+      const user = await updateProfile(profileData,userId);
       return {
         statusCode: 200,
         body: { user }

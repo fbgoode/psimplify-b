@@ -15,8 +15,14 @@ async function add (user) {
   return response;
 }
 
+async function update (userId,userData) {
+  const response = await User.findByIdAndUpdate(userId,userData,{new:true});
+  return response;
+}
+
 module.exports = Object.freeze({
   add,
   getById,
-  getByEmail
+  getByEmail,
+  update
 });
