@@ -17,4 +17,9 @@ router.get('/appointments/last', async (req, res) => {
     res.status(result.statusCode).json(result.body);
 });
 
+router.put('/appointments/:id', async (req, res) => {
+    const result = await adapters.updateAppointment(req,res);
+    res.status(result.statusCode).json(result.body);
+});
+
 module.exports = router;

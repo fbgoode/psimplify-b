@@ -14,3 +14,8 @@ const makeGetLastAppointments = require('../../../useCases/customer/appointment/
 const makeGetLastAppointmentsAdapter = require('../../../adapters/api/appointments/getLastAppointments');
 const getLastAppointments = makeGetLastAppointments({appointmentdb});
 exports.getLastAppointments = makeGetLastAppointmentsAdapter({getLastAppointments});
+
+const makeUpdateAppointment = require('../../../useCases/customer/appointment/updateAppointment');
+const makeUpdateAppointmentAdapter = require('../../../adapters/api/appointments/updateAppointment');
+const updateAppointment = makeUpdateAppointment({appointmentdb});
+exports.updateAppointment = makeUpdateAppointmentAdapter({updateAppointment});

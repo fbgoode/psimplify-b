@@ -17,8 +17,14 @@ async function add (appointment) {
   return response;
 }
 
+async function update (user,_id,appointment) {
+  const response = await Appointment.findOneAndUpdate({_id,user},appointment,{new:true});
+  return response;
+}
+
 module.exports = Object.freeze({
   add,
   getById,
-  query
+  query,
+  update
 });
